@@ -1,0 +1,29 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Grant {
+  id: ID
+  foundationName: String
+  grantName: String
+  avgAmount: Float
+  status: String
+  deadline: String
+  matchDate: String
+  tenantId: String
+  feedback: String
+}
+
+type Query {
+  grants(tenantId: String!): [Grant!]!
+  newMatches(tenantId: String!): [Grant!]!
+}
+
+type Mutation {
+  submitFeedback(id: String!, input: SubmitFeedbackInput!, tenantId: String!): Grant
+}
+
+input SubmitFeedbackInput {
+  feedback: String!
+  approve: Boolean!
+}
