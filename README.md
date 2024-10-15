@@ -38,6 +38,12 @@ $ npm install
 $ npm run seed
 ```
 
+## Run the tests
+
+```bash
+$ npm run test:e2e
+```
+
 ## Compile and run the project
 
 ```bash

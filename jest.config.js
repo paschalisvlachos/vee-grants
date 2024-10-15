@@ -10,5 +10,5 @@ module.exports = {
   collectCoverageFrom: ['**/*.(t|j)s'],
   coverageDirectory: './coverage',
   testPathIgnorePatterns: ['/node_modules/'],
-  forceExit: true // This forces Jest to exit after tests
+  forceExit: true
 };

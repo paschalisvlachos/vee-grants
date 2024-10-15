@@ -10,7 +10,7 @@ export class Grant extends Document {
   status: string;
 
   @Prop({ required: true })
-  tenantId: string;  // Tenant-specific field
+  tenantId: string; 
 
   @Prop({ required: true })
   matchDate: Date;

@@ -4,20 +4,20 @@ import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
-import { TenantMiddleware } from './tenant.middleware';  // Import your tenant middleware
+import { TenantMiddleware } from './tenant.middleware';
 import { MongooseModule } from '@nestjs/mongoose';
-import { GrantsModule } from './grants/grants.module';   // Import GrantsModule
-import { AuthModule } from './auth/auth.module';  // Import AuthModule
+import { GrantsModule } from './grants/grants.module';   
+import { AuthModule } from './auth/auth.module'; 
 
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),  // Auto-generate GraphQL schema
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'), 
     }),
-    MongooseModule.forRoot('mongodb://localhost:27017/VeeGrantDB'),  // Correct MongoDB connection
-    GrantsModule,  // Import GrantsModule
-    AuthModule,    // Import AuthModule
+    MongooseModule.forRoot('mongodb://localhost:27017/VeeGrantDB'),
+    GrantsModule, 
+    AuthModule,    
   ],
   controllers: [AppController],
   providers: [AppService],  // Only include AppService in providers
