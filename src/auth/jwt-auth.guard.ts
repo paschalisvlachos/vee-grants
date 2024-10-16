@@ -11,10 +11,8 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
 
   handleRequest(err, user, info) {
     if (err || !user) {
-      console.log('No valid token, blocking access');  // Ensure the guard blocks access
       throw new UnauthorizedException('You are not authorized to access this resource');
     }
-    console.log('User is authorized:', user);  // Log for successful authorization
     return user;
   }
 }

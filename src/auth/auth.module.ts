@@ -8,14 +8,14 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),  // Load environment variables from .env file
+    ConfigModule.forRoot(),  
     PassportModule,
     JwtModule.registerAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
-        secret: configService.get<string>('JWT_SECRET'),  // Use JWT_SECRET from .env
-        signOptions: { expiresIn: '60m' },  // Token expires in 60 minutes
+        secret: configService.get<string>('JWT_SECRET'),  
+        signOptions: { expiresIn: '60m' },
       }),
     }),
   ],

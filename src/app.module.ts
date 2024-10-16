@@ -8,6 +8,11 @@ import { TenantMiddleware } from './tenant.middleware';
 import { MongooseModule } from '@nestjs/mongoose';
 import { GrantsModule } from './grants/grants.module';   
 import { AuthModule } from './auth/auth.module'; 
+import * as dotenv from 'dotenv';
+
+dotenv.config();
+
+console.log('Connecting to MongoDB at:', process.env.MONGO_URI);
 
 @Module({
   imports: [
@@ -15,7 +20,7 @@ import { AuthModule } from './auth/auth.module';
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'), 
     }),
-    MongooseModule.forRoot('mongodb://localhost:27017/VeeGrantDB'),
+    MongooseModule.forRoot(process.env.MONGO_URI),
     GrantsModule, 
     AuthModule,    
   ],

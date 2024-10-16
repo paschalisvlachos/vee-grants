@@ -1,0 +1,32 @@
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongo_container
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+    ports:
+      - "27018:27017"
+    volumes:
+      - ./mongo-init:/docker-entrypoint-initdb.d
+    networks:
+      - my_custom_bridge
+    healthcheck:
+      disable: true
+
+  nestjs-app:
+    build: .
+    ports:
+      - "3000:3000"
+    container_name: nestjs_container
+    environment:
+      MONGO_URI: mongodb://admin:password123@mongo_container:27017/VeeGrantDB?authSource=admin
+      JWT_SECRET: PaschalisVee
+    depends_on:
+      - mongodb
+    networks:
+      - my_custom_bridge
+
+networks:
+  my_custom_bridge:
+    external: true

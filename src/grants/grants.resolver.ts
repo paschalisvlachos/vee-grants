@@ -43,7 +43,7 @@ export class GrantsResolver {
   // Helper method to map Mongoose model to GraphQL model
   private mapToGraphQLModel(grant: any): Grant {
     return {
-      id: grant._id.toString(),  // Map MongoDB _id to GraphQL id
+      id: grant._id.toString(),
       foundationName: grant.foundationName,
       grantName: grant.grantName || '',
       avgAmount: grant.avgAmount || 0,
